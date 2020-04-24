@@ -213,7 +213,7 @@ REST_FRAMEWORK = {
 # 配置数据库
 MYSQL_HOST = "127.0.0.1"
 MYSQL_NAME = "it_blog"
-MYSQL_USER = "jinxuan"
+MYSQL_USER = "root"
 MYSQL_PASSWORD = "qian2617..com"
 MYSQL_PORT = 3306
 
