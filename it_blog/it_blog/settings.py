@@ -230,9 +230,6 @@ DATABASES = {
 }
 
 # 使用django-redis缓存页面，缓存配置如下：
-# REDIS_HOST = os.getenv('IZONE_REDIS_HOST', '127.0.0.1')
-# REDIS_PORT = os.getenv('IZONE_REDIS_PORT', 6379)
-# REDIS_HOST = "111.229.154.193"
 REDIS_HOST = "127.0.0.1"
 REDIS_PORT = 6379
 
@@ -266,8 +263,8 @@ EMAIL_USE_SSL = os.getenv('IZONE_EMAIL_USE_SSL', 'True').upper() == 'TRUE'
 DEFAULT_FROM_EMAIL = os.getenv('IZONE_DEFAULT_FROM_EMAIL', '秋城夜话 <your-email-address>')
 
 # 网站默认设置和上下文信息
-SITE_DESCRIPTION = os.getenv('IZONE_SITE_DESCRIPTION', '秋城夜话 是一个使用 Django+Bootstrap4 搭建的个人博客类型网站')
-SITE_KEYWORDS = os.getenv('IZONE_SITE_KEYWORDS', '秋城夜话,Django博客,个人博客')
+SITE_DESCRIPTION = os.getenv('IZONE_SITE_DESCRIPTION', '秋城技谈 This is a technical blog site built using Django+Bootstrap4')
+SITE_KEYWORDS = os.getenv('IZONE_SITE_KEYWORDS', '秋城夜话,Django博客,个人博客，秋城技谈')
 
 # 个性化设置，非必要信息
 # 个人 Github 地址
