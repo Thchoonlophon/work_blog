@@ -6,17 +6,17 @@
 <link href="{% static 'blog/css/timeline.css'%}?v=1.07" rel="stylesheet">
 {% endblock %}
 
-{% block head_title %}网站建站历程，查看博客搭建Timeline时间轴{% endblock %}
+{% block head_title %}Website construction process, check the blog set up Timeline{% endblock %}
 {% block metas %}
 <meta name="description"
-      content="本网站是一个采用django+bootstrap4搭建的个人博客，本着学习和分享的精神，博客项目开源，源代码可以到我的Github中查看，网站建站历程可以查看页面Timeline内容。">
-<meta name="keywords" content="Timeline时间轴,个人博客建站日志">
+      content="This website is a technical blog built by django+bootstrap4. In the spirit of learning and sharing, the blog project is open source. The source code can be viewed on my Github.">
+<meta name="keywords" content="Timeline, logs of the blog.">
 {% endblock %}
 
 {% block base_content %}
 <div class="container">
     <div class="page-header mt-0">
-        <h1 id="timeline"><i class="fa fa-hourglass-half mr-2"></i>建站日志</h1>
+        <h1 id="timeline"><i class="fa fa-hourglass-half mr-2"></i>Web logs</h1>
     </div>
     <ul class="timeline" id="timeline">
         {% for timeline in timeline_list %}
@@ -39,7 +39,7 @@
             </div>
         </li>
         {% empty %}
-        <p>暂时没有时间线</p>
+        <p>There is no timeline yet.</p>
         {% endfor %}
     </ul>
 </div>
