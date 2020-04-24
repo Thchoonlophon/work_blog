@@ -47,7 +47,7 @@
 
 <!--回到顶部按钮-->
 <div class="text-center" id="to-top">
-    <i class="fa fa-chevron-up" id="btn-top" title="回到顶部"></i>
+    <i class="fa fa-chevron-up" id="btn-top" title="Back to top"></i>
 </div>
 
 <!--主要内容块-->
@@ -66,14 +66,14 @@ $(function(){var myElement=document.querySelector(".blog-navbar");var headroom=n
 {% if user.is_authenticated %}
 <script>
 var msgs = {% get_notifications_count user 'false' %};
-if(msgs>0){var _record=0;var myTitle=document.title;function titleBlink(){_record++;if(_record%2){document.title='【 】'+myTitle}else{document.title='【新消息】'+myTitle};setTimeout("titleBlink()",500)};titleBlink()}
+if(msgs>0){var _record=0;var myTitle=document.title;function titleBlink(){_record++;if(_record%2){document.title='【 】'+myTitle}else{document.title='【New notifications】'+myTitle};setTimeout("titleBlink()",500)};titleBlink()}
 </script>
 {% endif %}
 {% block end_file %}{% endblock %}
 <footer class="container-fluid mt-4 py-0">
     <div class="card-body text-center px-0 f-14">
         <p class="card-text mb-1">Copyright&nbsp;&copy;&nbsp;2020-&nbsp;<span id="year-info"></span>
-            <a href="https://github.com/Thchoonlophon" target="_blank" title="博客作者的Github">Thchoonlophon</a>.&nbsp;Powered&nbsp;by&nbsp;Django. 感谢 <a href="https://github.com/Hopetree">Hopetree</a> 的技术支持
+            <a href="https://github.com/Thchoonlophon" target="_blank" title="The Github of author">Thchoonlophon</a>.&nbsp;Powered&nbsp;by&nbsp;Django. Thanks for the technical supports of <a href="https://github.com/Hopetree">Hopetree</a> 
         </p>
         <p class="mb-0">
             <a href="http://www.beian.miit.gov.cn/" target="_blank"><img src="/static/blog/img/icon-footer.png" alt="">&nbsp;&nbsp;皖ICP备18009207号-1</a>&nbsp;|
@@ -85,7 +85,7 @@ if(msgs>0){var _record=0;var myTitle=document.title;function titleBlink(){_recor
             var x = document.getElementById("year-info");
             x.innerHTML=d.getFullYear();var y=document.getElementById("web-day");
             var dd=Math.floor((d.getTime() - old.getTime()) / (24 * 3600 * 1000));
-            var d_str="| 网站已续航 "+dd+" 天";y.innerHTML=d_str;}getnewYear()</script>
+            var d_str="| The website has been running for "+dd+" days";y.innerHTML=d_str;}getnewYear()</script>
     </div>
 </footer>
 </body>
