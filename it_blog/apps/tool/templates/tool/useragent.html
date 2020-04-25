@@ -1,30 +1,30 @@
 {% extends "tool/base_tool.html" %}
 {% load static %}
 
-{% block head_title %}网页HTTP请求头Request Headers在线生成User-Agent_在线工具{% endblock %}
+{% block head_title %}Web page HTTP Request Headers generate user-agent_ online tool online{% endblock %}
 {% block metas %}
 <meta name="description"
-      content="User-Agent生成器，网页请求头生成器，自动生成请求头Request Headers，在线生成各种浏览器ie、chrome、firefox等的请求头user-agent，Python爬虫的headers参数自动生成。">
-<meta name="keywords" content="网页请求头,Request Headers,User-Agent,在线工具">
+      content="User-agent generator, web Request header generator, automatic generation of Request header Request Headers, online generation of various browsers ie, chrome, firefox, etc. Request header user-agent, Python crawler parameters automatically generated.">
+<meta name="keywords" content="Web Request header,Request Headers, user-agent, online tools">
 {% endblock %}
 
-{% block tool_name %}User-Agent 生成器{% endblock %}
+{% block tool_name %}The User-Agent generator{% endblock %}
 {% block left_content %}
 <div class="card-body p-0">
-    <h3 class="card-title pl-2 title-info">工具说明：</h3>
+    <h3 class="card-title pl-2 title-info">Tools' info:</h3>
     <ul>
-        <li>User-Agent多用于爬虫程序中设置请求头Headers，是爬虫程序最简单的伪装</li>
-        <li>本工具通过设置不同的参数自动生成不同平台不同系统不同浏览器的User-Agent</li>
-        <li>参数不选的时候表示不设置限制，随机生成User-Agent，设置了参数就生成对应参数的User-Agent</li>
-        <li>当设置的参数之间有冲突的时候，将无法生成合适的User-Agent，会显示错误信息</li>
+        <li>User-agent is mostly used to set the request Headers in the crawler and is the simplest disguise for the crawler.</li>
+        <li>This tool automatically generates user-agents for different platforms, systems and browsers by setting different parameters.</li>
+        <li>When the parameter is not selected, no restriction is set, and user-agent is randomly generated. If the parameter is set, the corresponding user-agent is generated.</li>
+        <li>When there is a conflict between the set parameters, the appropriate user-agent cannot be generated and an error message is displayed.</li>
     </ul>
 </div>
 <div class="mb-3">
 
     <form class="form-horizontal">
-        <h3 class="card-title pl-2 title-info">请求头参数选择</h3>
+        <h3 class="card-title pl-2 title-info">Request header parameter selection</h3>
         <div class="control-group">
-            <label class="control-label">设备：</label>
+            <label class="control-label">Device:</label>
             <div class="controls" id="device_type">
                 <label class="checkbox inline"><input class="ml-2 mr-3" name="device_type" type="checkbox"
                                                       value="desktop">desktop</label>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label">系统：</label>
+            <label class="control-label">System:</label>
             <div class="controls" id="os">
                 <label class="checkbox inline"><input class="ml-2 mr-3" name="os" type="checkbox"
                                                       value="win">win</label>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label">浏览器：</label>
+            <label class="control-label">Browser:</label>
             <div class="controls" id="navigator">
                 <label class="checkbox inline"><input class="ml-2 mr-3" name="navigator" type="checkbox"
                                                       value="ie">ie</label>
@@ -58,11 +58,11 @@
             </div>
         </div>
     </form>
-    <button type="submit" class="btn btn-info btn-sm rounded-0" id="get_useragent">生成 User-Agent</button>
+    <button type="submit" class="btn btn-info btn-sm rounded-0" id="get_useragent">Get User-Agent</button>
 </div>
 <div class="card mb-3 rounded-0">
     <div class="card-header text-center text-info font-weight-bold py-2">User-Agent</div>
-    <div class="card-body push-result text-center p-3">结果显示区</div>
+    <div class="card-body push-result text-center p-3">Display Area</div>
 </div>
 {% endblock %}
 
