@@ -1,35 +1,35 @@
 {% extends "tool/base_tool.html" %}
 {% load static %}
 
-{% block head_title %}正则表达式在线测试，常用正则表达式_在线工具{% endblock %}
+{% block head_title %}Regular expression online testing _ online tool{% endblock %}
 {% block metas %}
-<meta name="description" content="正则表达式在线测试工具，在线使用正则表达式(Regular Expression)，Python正则表达式的用法，提供常用正则表达式规则。">
-<meta name="keywords" content="正则表达式,Python正则表达式,Regular Expression,在线工具">
+<meta name="description" content="Regular Expression online testing tool, online use of Regular Expression, Python Regular Expression usage, provides common Regular Expression rules.">
+<meta name="keywords" content="Regular Expression, Python Regular Expression, Regular Expression, online tools">
 {% endblock %}
 
-{% block tool_name %}在线正则表达式{% endblock %}
+{% block tool_name %}Online Regular Expression{% endblock %}
 {% block left_content %}
 <div class="card-body p-0">
-    <h3 class="card-title pl-2 title-info">工具说明：</h3>
+    <h3 class="card-title pl-2 title-info">Tools' Info</h3>
     <ul>
-        <li>按照通用的正则表达式的规则填写表单即可提取信息</li>
-        <li>本工具使用Python的正则表达式库实现，支持Python正则表达式语法</li>
+        <li>Information can be extracted by filling in the form according to the general rules of regular expressions.</li>
+        <li>This tool USES Python's regular expression library to support Python regular expression syntax.</li>
     </ul>
 </div>
 <div class="mb-3">
     <div class="form-group">
-        <label>待匹配信息：</label>
+        <label>Information To Be Matched:</label>
         <textarea class="form-control rounded-0" id="form-text" rows="8" required></textarea>
     </div>
     <div class="form-group">
-        <label>正则表达式：</label>
-        <input type="url" class="form-control rounded-0" id="form-regex" placeholder="例： [a-zA-z]+://[\S]*" required>
+        <label>Regular expressions:</label>
+        <input type="url" class="form-control rounded-0" id="form-regex" placeholder="Example: [a-zA-z]+://[\S]*" required>
     </div>
-    <button type="submit" class="btn btn-info btn-sm rounded-0" id="start-re">开始匹配</button>
+    <button type="submit" class="btn btn-info btn-sm rounded-0" id="start-re">Begin To Match</button>
 </div>
 <div class="card mb-3 rounded-0">
-    <div class="card-header text-center text-info font-weight-bold py-2">匹配结果</div>
-    <div class="card-body table-responsive push-result text-center p-3">结果显示区</div>
+    <div class="card-header text-center text-info font-weight-bold py-2">Matching Results</div>
+    <div class="card-body table-responsive push-result text-center p-3">Display Area</div>
 </div>
 {% endblock %}
 
