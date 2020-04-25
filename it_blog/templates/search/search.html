@@ -3,10 +3,10 @@
 {% load humanize %}
 {% load highlight %}
 
-{% block head_title %}文章搜索：{{ query }}{% endblock %}
+{% block head_title %}Search For: {{ query }}{% endblock %}
 {% block metas %}
-<meta name="description" content="文章搜索：{{ query }}，网站全文搜索功能，按照文章标题和内容建立索引，实现整站搜索，django-haystack全文搜索库的使用">
-<meta name="keywords" content="{{ query }},全文搜索,django-haystack">
+<meta name="description" content="Article search: {{ query }} , website full-text search function, according to the title and content of the article index, the whole site search, django-haystack full-text search library use.">
+<meta name="keywords" content="{{ query }},Full-text search,django-haystack">
 {% endblock %}
 
 {% block base_content %}
@@ -14,9 +14,9 @@
     <div class="row">
         <div class="col-lg-8">
             <div class="description bg-white px-3 pt-3 pb-1 mb-1 mb-sm-2 mb-md-3">
-                <p class="float-right mb-0">共<span class="mx-2 text-info">{{ paginator.count }}</span>篇</p>
-                <h1 class="f-17"><strong>当前搜索：{{ query }}</strong></h1>
-                <p class="f-16">网站全文搜索功能，将整个网站的文章的标题和内容进行分词存储，然后给每个分词建立索引，搜索功能返回的是全站文章中标题或者内容中包含关键词的文章。</p>
+                <p class="float-right mb-0">There are <span class="mx-2 text-info">{{ paginator.count }}</span> articles</p>
+                <h1 class="f-17"><strong>Current search: {{ query }}</strong></h1>
+                <p class="f-16">The full-text search function of the website, will be the whole site of the article title and content for word storage, and then to each word to establish an index, search function returns is the whole site of the article title or content containing keywords in the article.</p>
             </div>
             {% if query %}
             <div class="summary-list">
@@ -44,32 +44,32 @@
                         <p class="d-block d-sm-none mb-2 f-15">{% highlight this_body with query max_length 64 %}</p>
                         {% endwith %}
                         <div class="text-muted mb-0 f-12">
-                            <a class="cate" href="{{ article.object.category.get_absolute_url }}" title="查看当前分类下更多文章">
+                            <a class="cate" href="{{ article.object.category.get_absolute_url }}" title="See the current category for more articles.">
                                 <i class="fa fa-book mr-1"></i>{{ article.object.category }}</a>
                             <span><i class="fa fa-eye ml-2 mr-1"></i>{{ article.object.views }}</span>
                             <a href="{{ article.object.get_absolute_url }}#comment-block" target="_blank"
-                               title="查看文章评论">
+                               title="View article comments">
                                 <i class="fa fa-comments ml-2 mr-1"></i>{% get_comment_count article.object %}</a>
                         </div>
                     </div>
                 </div>
                 {% empty %}
-                <div class="p-3 mt-3 bg-white"><p>暂时没有文章!</p></div>
+                <div class="p-3 mt-3 bg-white"><p>There is no article yet!</p></div>
                 {% endfor %}
             </div>
             {% endif %}
             {% if is_paginated %}
             <div class="text-center mt-2 mt-sm-1 mt-md-0 mb-3 f-16">
                 {% if page_obj.has_previous %}
-                <a class="text-success" href="?q={{ query }}&amp;page={{ page_obj.previous_page_number }}">上一页</a>
+                <a class="text-success" href="?q={{ query }}&amp;page={{ page_obj.previous_page_number }}">Previous</a>
                 {% else %}
-                <span class="text-secondary" title="当前页已经是首页">上一页</span>
+                <span class="text-secondary" title="The current page is already the first page">Previous</span>
                 {% endif %}
-                <span class="mx-2">第&nbsp;{{ page_obj.number }}&nbsp;/&nbsp;{{ paginator.num_pages }}&nbsp;页</span>
+                <span class="mx-2">Page &nbsp;{{ page_obj.number }}&nbsp;/&nbsp;{{ paginator.num_pages }}&nbsp;</span>
                 {% if page_obj.has_next %}
-                <a class="text-success" href="?q={{ query }}&amp;page={{ page_obj.next_page_number }}">下一页</a>
+                <a class="text-success" href="?q={{ query }}&amp;page={{ page_obj.next_page_number }}">Next</a>
                 {% else %}
-                <span class="text-secondary" title="当前页已经是末页">下一页</span>
+                <span class="text-secondary" title="The current page is already the last page">Next</span>
                 {% endif %}
             </div>
             {% endif %}
