@@ -40,7 +40,7 @@ pre {
     white-space:nowrap;
 }
 .card ul {
-    line-height:1.5;
+    line-height:2.5;
 }
 @media (min-width: 1200px) {
 .tool-list .card:hover {
