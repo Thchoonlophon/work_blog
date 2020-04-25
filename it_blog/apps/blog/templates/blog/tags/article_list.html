@@ -21,15 +21,15 @@
             <p class="d-none d-sm-block mb-2 f-15">{{ article.summary|truncatechars:130 }}</p>
             <p class="d-block d-sm-none mb-2 f-15">{{ article.summary|truncatechars:64 }}</p>
             <div class="text-muted mb-0 f-12">
-                <a class="cate" href="{{ article.category.get_absolute_url }}" title="查看当前分类下更多文章">
+                <a class="cate" href="{{ article.category.get_absolute_url }}" title="See more articles under the current category.">
                     <i class="fa fa-book mr-1"></i>{{ article.category }}</a>
                 <span><i class="fa fa-eye ml-2 mr-1"></i>{{ article.views }}</span>
-                <a href="{{ article.get_absolute_url }}#comment-block" target="_blank" title="查看文章评论">
+                <a href="{{ article.get_absolute_url }}#comment-block" target="_blank" title="View comments of this article.">
                     <i class="fa fa-comments ml-2 mr-1"></i>{% get_comment_count article %}</a>
             </div>
         </div>
     </div>
     {% empty %}
-    <div class="p-3 mt-3 bg-white"><p>暂时没有文章!</p></div>
+    <div class="p-3 mt-3 bg-white"><p>No article yet!</p></div>
     {% endfor %}
 </div>
