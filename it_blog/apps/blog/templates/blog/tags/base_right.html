@@ -4,29 +4,29 @@
 <!--个人空间-->
 <div class="card border-0 rounded-0 px-3 mb-2 mb-md-3 d-none d-lg-block" id="home-card">
     <div class="card-header bg-white px-0">
-        <strong><i class="fa fa-paper-plane mr-2 f-17"></i>个人空间</strong>
+        <strong><i class="fa fa-paper-plane mr-2 f-17"></i>Author's Info</strong>
         <img class="float-right" id="theme-img"
              src="{% if request.COOKIES.toggleTheme == 'dark' %}{% static 'blog/img/toggle-dark.png' %}{% else %}{% static 'blog/img/toggle-light.png' %}{% endif %}"
-             alt="theme-toggle" title="切换主题">
+             alt="theme-toggle" title="The dark theme">
     </div>
     <div class="card-body px-0 pt-3 pb-1">
         <div class="row text-center">
             <div class="col">
-                <a href="https://github.com/Thchoonlophon" target="_blank" title="进入博主的Github,虽然没有什么用">
-                    <img style="max-width:40px" alt="博主的github" src="{% static 'blog/img/github.png' %}">
+                <a href="https://github.com/Thchoonlophon" target="_blank" title="Visit the author's Github">
+                    <img style="max-width:40px" alt="The author's GitHub" src="{% static 'blog/img/github.png' %}">
                     <p class="mt-2">GitHub</p>
                 </a>
             </div>
             <div class="col">
-                <a href="{% url 'blog:timeline'%}" target="_blank" title="查看网站建站历程">
-                    <img style="max-width:40px" alt="网站的建站历程" src="{% static 'blog/img/blog.png' %}">
+                <a href="{% url 'blog:timeline'%}" target="_blank" title="View the process of website building">
+                    <img style="max-width:40px" alt="The process of website building" src="{% static 'blog/img/blog.png' %}">
                     <p class="mt-2">Timeline</p>
                 </a>
             </div>
             <div class="col">
-                <a href="https://weibo.com/234114309" target="_blank" title="微博">
-                    <img style="max-width:40px" alt="微博" src="{% static 'blog/img/weibo.png' %}">
-                    <p class="mt-2">微博</p>
+                <a href="https://weibo.com/234114309" target="_blank" title="Weibo">
+                    <img style="max-width:40px" alt="Weibo" src="{% static 'blog/img/weibo.png' %}">
+                    <p class="mt-2">Weibo</p>
                 </a>
             </div>
         </div>
@@ -34,38 +34,30 @@
 </div>
 <div class="card border-0 rounded-0 px-3 mb-2 mb-md-3 d-none d-lg-block" id="home-card">
 	<div class="card-header bg-white px-0">
-		<strong><i class="fa fa-bullhorn mr-2 f-17"></i>本站公告</strong>
+		<strong><i class="fa fa-bullhorn mr-2 f-17"></i>Announcement</strong>
 	</div>
 	<div class="card-body px-0 py-3">
 		<p class="mt-2">
-			本站未做IE兼容性测试，可能不兼容所有IE内核的浏览器，并影响各功能的实际使用体验，故优先推荐使用Chrome浏览器。
+			This site has not done IE compatibility test, may not be compatible with all Internet explorer kernel browsers, and affect the actual use of each function experience, so it is preferred to recommend the use of Chrome browser.
 		</p>
 		<p class="mt-2">
-			该站主要用于记录站长学习历程以及工作和学习过程中所遇到的问题，是个独立网站，暂时还未兼容秋城夜话账号登录。
+			The station is mainly used to record the master learning process and the problems encountered in the process of work and learning, is an independent website, do not support the autumn city night account login temporarily.
 		</p>
 
-		<!--
-		<p class="mt-2">
-			近期因为秋城城主锦丧失了写东西的乐趣和动力，也可能是因为懒，故目前城主已经较长时间未进行更新。
-		</p>
-		<p class="mt-2">
-			嚯哈哈哈哈哈哈~本城主又回来了，但是本城主现在啥都不想写，你说气人不？
-		</p>
-		-->
 	</div>
 </div>
 <!--文章分类-->
 <div class="card border-0 rounded-0 px-3 mb-2 mb-md-3" id="category-card">
     <div class="card-header bg-white px-0">
-        <strong><i class="fa fa-book mr-2 f-17"></i>文章分类</strong>
+        <strong><i class="fa fa-book mr-2 f-17"></i>Category</strong>
     </div>
     {% get_category_list as categories %}
     <ul class="list-group list-group-flush f-16">
         {% for each in categories %}
         <li class="list-group-item d-flex justify-content-between align-items-center pr-2 py-2">
             <a class="category-item" href="{{ each.get_absolute_url }}"
-               title="查看【{{ each.name }}】分类下所有文章">{{ each.name }}</a>
-            <span class="badge text-center" title="当前分类下有{{ each.total_num }}篇文章">{{ each.total_num }}</span>
+               title="View all the articles under category【{{ each.name }}】">{{ each.name }}</a>
+            <span class="badge text-center" title="There are {{ each.total_num }} articles under the current category">{{ each.total_num }}</span>
         </li>
         {% endfor %}
     </ul>
@@ -73,14 +65,14 @@
 <!--标签云-->
 <div class="card border-0 rounded-0 px-3 mb-2 mb-md-3" id="tag-card">
     <div class="card-header bg-white px-0">
-        <strong><i class="fa fa-tags mr-2 f-17"></i>标&nbsp;签&nbsp;云</strong>
+        <strong><i class="fa fa-tags mr-2 f-17"></i>Tag Cloud</strong>
     </div>
     <div class="card-body px-0 py-3">
         <div class="tag-cloud">
             {% get_tag_list as tag_list %}
             {% for tag in tag_list %}
             <a href="{{ tag.get_absolute_url }}" class="tags f-16" id="tag-{{ forloop.counter }}"
-               title="【{{ tag.name }}】标签下有{{ tag.total_num }}篇文章">{{ tag.name }}</a>
+               title="There are {{ tag.total_num }} articles under the tag【{{ tag.name }}】">{{ tag.name }}</a>
             {% endfor %}
         </div>
     </div>
@@ -89,7 +81,7 @@
 <div class="d-none d-lg-block">
     <div class="card border-0 rounded-0 px-3 mb-2 mb-md-3" id="friends-card">
         <div class="card-header bg-white px-0">
-            <strong><i class="fa fa-link mr-2 f-17"></i>友情链接</strong>
+            <strong><i class="fa fa-link mr-2 f-17"></i>Blogroll</strong>
         </div>
         <div class="card-body px-0 py-3">
             <div class="tool-list">
@@ -109,7 +101,7 @@
 <!-- 微信 -->
 <div class="card border-0 rounded-0 px-3 mb-2 mb-md-3" id="tag-card">
     <div class="card-header bg-white px-0">
-		<strong><i class="fa fa-weixin mr-2 f-17"></i>博主微信</strong>
+		<strong><i class="fa fa-weixin mr-2 f-17"></i>Author's WeChat</strong>
 	</div>
 	<div class="card-body px-0 py-3">
 		<img style="max-width:200px; text-align:center" src="{% static 'blog/img/WeChat.jpg' %}">
