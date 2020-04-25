@@ -104,7 +104,7 @@ class CategoryView(generic.ListView):
     def get_context_data(self, **kwargs):
         context_data = super(CategoryView, self).get_context_data()
         cate = get_object_or_404(Category, slug=self.kwargs.get('slug'))
-        context_data['search_tag'] = '文章分类'
+        context_data['search_tag'] = 'Category'
         context_data['search_instance'] = cate
         return context_data
 
@@ -131,7 +131,7 @@ class TagView(generic.ListView):
     def get_context_data(self, **kwargs):
         context_data = super(TagView, self).get_context_data()
         tag = get_object_or_404(Tag, slug=self.kwargs.get('slug'))
-        context_data['search_tag'] = '文章标签'
+        context_data['search_tag'] = 'Tag'
         context_data['search_instance'] = tag
         return context_data
 
@@ -149,7 +149,7 @@ def AboutView(request):
             cache.set(md_key, body, 3600 * 24 * 15)
     else:
         repo_url = 'https://github.com/Thchoonlophon'
-        body = '<li>作者 Github 地址：<a href="{}">{}</a></li>'.format(repo_url, repo_url)
+        body = '<li>Author\'s Github address：<a href="{}">{}</a></li>'.format(repo_url, repo_url)
     return render(request, 'blog/about.html', context={'body': body})
 
 
