@@ -23,7 +23,7 @@ def change_profile_view(request):
                     os.remove(old_avatar_file)
             form.save()
             # 添加一条信息,表单验证成功就重定向到个人信息页面
-            messages.add_message(request,messages.SUCCESS,'个人信息更新成功！')
+            messages.add_message(request,messages.SUCCESS,'Personal information updated successfully!')
             return redirect('oauth:profile')
     else:
         # 不是POST请求就返回空表单
