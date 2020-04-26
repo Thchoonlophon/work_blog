@@ -43,17 +43,17 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 # 自定义管理站点的名称和URL标题
-admin.site.site_header = '网站管理'
-admin.site.site_title = '博客后台管理'
+admin.site.site_header = 'Site management'
+admin.site.site_title = 'Background management'
 
 
 @admin.register(Timeline)
 class TimelineAdmin(admin.ModelAdmin):
     list_display = ('title', 'side', 'update_date', 'icon', 'icon_color',)
     fieldsets = (
-        ('图标信息', {'fields': (('icon', 'icon_color'),)}),
-        ('时间位置', {'fields': (('side', 'update_date', 'star_num'),)}),
-        ('主要内容', {'fields': ('title', 'content')}),
+        ('Icon Info', {'fields': (('icon', 'icon_color'),)}),
+        ('Time and Location', {'fields': (('side', 'update_date', 'star_num'),)}),
+        ('Main Content', {'fields': ('title', 'content')}),
     )
     date_hierarchy = 'update_date'
     list_filter = ('star_num', 'update_date')
@@ -86,7 +86,7 @@ class AboutBlogAdmin(admin.ModelAdmin):
     list_display = ('short_body', 'create_date', 'update_date')
 
     def short_body(self, obj):
-        return '自由编辑 About 页面的内容，支持 markdown 语法。'
+        return 'Freely edit the content of the About page to support markdown syntax。'
 
     short_body.short_description = 'AboutBlog'
 
