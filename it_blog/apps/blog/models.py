@@ -174,12 +174,12 @@ class Carousel(models.Model):
 
 # 死链
 class Silian(models.Model):
-    badurl = models.CharField('死链地址', max_length=200, help_text='注意：地址是以http开头的完整链接格式')
-    remark = models.CharField('死链说明', max_length=50, blank=True, null=True)
-    add_date = models.DateTimeField('提交日期', auto_now_add=True)
+    badurl = models.CharField('Dead Link Address', max_length=200, help_text='Note: the address is a full link format starting with HTTP')
+    remark = models.CharField('Dead Link Info', max_length=50, blank=True, null=True)
+    add_date = models.DateTimeField('Submit Date', auto_now_add=True)
 
     class Meta:
-        verbose_name = '死链'
+        verbose_name = 'Dead Link'
         verbose_name_plural = verbose_name
         ordering = ['-add_date']
 
@@ -188,16 +188,16 @@ class Silian(models.Model):
 
 
 class FriendLink(models.Model):
-    name = models.CharField('网站名称', max_length=50)
-    description = models.CharField('网站描述', max_length=100, blank=True)
-    link = models.URLField('友链地址', help_text='请填写http或https开头的完整形式地址')
-    logo = models.URLField('网站LOGO', help_text='请填写http或https开头的完整形式地址', blank=True)
-    create_date = models.DateTimeField('创建时间', auto_now_add=True)
-    is_active = models.BooleanField('是否有效', default=True)
-    is_show = models.BooleanField('是否首页展示', default=False)
+    name = models.CharField('Site Name', max_length=50)
+    description = models.CharField('Site Description', max_length=100, blank=True)
+    link = models.URLField('Blogroll Address', help_text='Please fill in the full formal address beginning with HTTP or HTTPS')
+    logo = models.URLField('Site LOGO', help_text='Please fill in the full formal address beginning with HTTP or HTTPS', blank=True)
+    create_date = models.DateTimeField('Creation Time', auto_now_add=True)
+    is_active = models.BooleanField('Is Validy', default=True)
+    is_show = models.BooleanField('Display at Index', default=False)
 
     class Meta:
-        verbose_name = '友情链接'
+        verbose_name = 'Blogroll'
         verbose_name_plural = verbose_name
         ordering = ['create_date']
 
@@ -219,9 +219,9 @@ class FriendLink(models.Model):
         self.save(update_fields=['is_show'])
 
 class AboutBlog(models.Model):
-    body = models.TextField(verbose_name='About 内容')
-    create_date = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
-    update_date = models.DateTimeField(verbose_name='修改时间', auto_now=True)
+    body = models.TextField(verbose_name='About Contents')
+    create_date = models.DateTimeField(verbose_name='Creation Time', auto_now_add=True)
+    update_date = models.DateTimeField(verbose_name='Modified Time', auto_now=True)
 
     class Meta:
         verbose_name = 'About'
