@@ -15,7 +15,7 @@ class CommentAdmin(admin.ModelAdmin):
     def show_content(self, obj):
         return obj.content[:30]
 
-    show_content.short_description = '评论内容'
+    show_content.short_description = 'Comment Contents'
 
 
 @admin.register(Notification)
