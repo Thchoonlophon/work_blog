@@ -13,7 +13,7 @@ class Ouser(AbstractUser):
                                  )
 
     class Meta:
-        verbose_name = '用户'
+        verbose_name = 'Users'
         verbose_name_plural = verbose_name
         ordering = ['-id']
 
