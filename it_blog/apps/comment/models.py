@@ -58,12 +58,12 @@ def get_emoji_imgs(body):
 
 class Comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='%(class)s_related',
-                               verbose_name='评论人', on_delete=models.CASCADE)
-    create_date = models.DateTimeField('创建时间', auto_now_add=True)
-    content = models.TextField('评论内容')
-    parent = models.ForeignKey('self', verbose_name='父评论', related_name='%(class)s_child_comments', blank=True,
+                               verbose_name='Critics', on_delete=models.CASCADE)
+    create_date = models.DateTimeField('Creation Time', auto_now_add=True)
+    content = models.TextField('Comments')
+    parent = models.ForeignKey('self', verbose_name='Parent Comment', related_name='%(class)s_child_comments', blank=True,
                                null=True, on_delete=models.CASCADE)
-    rep_to = models.ForeignKey('self', verbose_name='回复', related_name='%(class)s_rep_comments',
+    rep_to = models.ForeignKey('self', verbose_name='Reply', related_name='%(class)s_rep_comments',
                                blank=True, null=True, on_delete=models.CASCADE)
 
     class Meta:
@@ -84,33 +84,33 @@ class Comment(models.Model):
 
 
 class ArticleComment(Comment):
-    belong = models.ForeignKey(Article, related_name='article_comments', verbose_name='所属文章',
+    belong = models.ForeignKey(Article, related_name='article_comments', verbose_name='Owner Article',
                                on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = '文章评论'
+        verbose_name = 'Article Comments'
         verbose_name_plural = verbose_name
         ordering = ['create_date']
 
 
 class Notification(models.Model):
-    create_p = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='提示创建者', related_name='notification_create',
+    create_p = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Notify Creator', related_name='notification_create',
                                  on_delete=models.CASCADE)
-    get_p = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='提示接收者', related_name='notification_get',
+    get_p = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Notify Receiver', related_name='notification_get',
                               on_delete=models.CASCADE)
-    comment = models.ForeignKey(ArticleComment, verbose_name='所属评论', related_name='the_comment',
+    comment = models.ForeignKey(ArticleComment, verbose_name='Owner Comment', related_name='the_comment',
                                 on_delete=models.CASCADE)
-    create_date = models.DateTimeField('提示时间', auto_now_add=True)
-    is_read = models.BooleanField('是否已读', default=False)
+    create_date = models.DateTimeField('Notice Time', auto_now_add=True)
+    is_read = models.BooleanField('Have Read', default=False)
 
     def mark_to_read(self):
         self.is_read = True
         self.save(update_fields=['is_read'])
 
     class Meta:
-        verbose_name = '提示信息'
+        verbose_name = 'Notifications'
         verbose_name_plural = verbose_name
         ordering = ['-create_date']
 
     def __str__(self):
-        return '{}@了{}'.format(self.create_p, self.get_p)
+        return '{} @ {}'.format(self.create_p, self.get_p)
