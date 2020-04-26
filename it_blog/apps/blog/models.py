@@ -9,10 +9,10 @@ import re
 
 # 文章关键词，用来作为SEO中keywords
 class Keyword(models.Model):
-    name = models.CharField('文章关键词', max_length=32)
+    name = models.CharField('Article Keywords', max_length=32)
 
     class Meta:
-        verbose_name = '关键词'
+        verbose_name = 'Keywords'
         verbose_name_plural = verbose_name
         ordering = ['name']
 
@@ -22,13 +22,13 @@ class Keyword(models.Model):
 
 # 文章标签
 class Tag(models.Model):
-    name = models.CharField('文章标签', max_length=20)
+    name = models.CharField('Article Tags', max_length=20)
     slug = models.SlugField(unique=True)
-    description = models.TextField('描述', max_length=240, default=settings.SITE_DESCRIPTION,
-                                   help_text='用来作为SEO中description,长度参考SEO标准')
+    description = models.TextField('Description', max_length=240, default=settings.SITE_DESCRIPTION,
+                                   help_text='Used as a description in SEO, length reference SEO standard')
 
     class Meta:
-        verbose_name = '标签'
+        verbose_name = 'Tags'
         verbose_name_plural = verbose_name
         ordering = ['id']
 
@@ -45,13 +45,13 @@ class Tag(models.Model):
 
 # 文章分类
 class Category(models.Model):
-    name = models.CharField('文章分类', max_length=20)
+    name = models.CharField('Categories', max_length=20)
     slug = models.SlugField(unique=True)
-    description = models.TextField('描述', max_length=240, default=settings.SITE_DESCRIPTION,
-                                   help_text='用来作为SEO中description,长度参考SEO标准')
+    description = models.TextField('Description', max_length=240, default=settings.SITE_DESCRIPTION,
+                                   help_text='Used as a description in SEO, length reference SEO standard')
 
     class Meta:
-        verbose_name = '分类'
+        verbose_name = 'Categories'
         verbose_name_plural = verbose_name
         ordering = ['name']
 
@@ -68,24 +68,24 @@ class Category(models.Model):
 # 文章
 class Article(models.Model):
     IMG_LINK = '/static/blog/img/summary.png'
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='作者', on_delete=models.PROTECT)
-    title = models.CharField(max_length=150, verbose_name='文章标题')
-    summary = models.TextField('文章摘要', max_length=230, default='文章摘要等同于网页description内容，请务必填写...')
-    body = models.TextField(verbose_name='文章内容')
-    img_link = models.CharField('图片地址', default=IMG_LINK, max_length=255)
-    create_date = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
-    update_date = models.DateTimeField(verbose_name='修改时间', auto_now=True)
-    views = models.IntegerField('阅览量', default=0)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='Author', on_delete=models.PROTECT)
+    title = models.CharField(max_length=150, verbose_name='Article Title')
+    summary = models.TextField('Article Abstract', max_length=230, default='The article summary is equivalent to the page description content, please be sure to fill in...')
+    body = models.TextField(verbose_name='Contents')
+    img_link = models.CharField('Picture Address', default=IMG_LINK, max_length=255)
+    create_date = models.DateTimeField(verbose_name='Creation Time', auto_now_add=True)
+    update_date = models.DateTimeField(verbose_name='Modified Time', auto_now=True)
+    views = models.IntegerField('Reading Amount', default=0)
     slug = models.SlugField(unique=True)
-    is_top = models.BooleanField('置顶', default=False)
+    is_top = models.BooleanField('Stick', default=False)
 
-    category = models.ForeignKey(Category, verbose_name='文章分类', on_delete=models.PROTECT)
-    tags = models.ManyToManyField(Tag, verbose_name='标签')
-    keywords = models.ManyToManyField(Keyword, verbose_name='文章关键词',
-                                      help_text='文章关键词，用来作为SEO中keywords，最好使用长尾词，3-4个足够')
+    category = models.ForeignKey(Category, verbose_name='Category', on_delete=models.PROTECT)
+    tags = models.ManyToManyField(Tag, verbose_name='Tags')
+    keywords = models.ManyToManyField(Keyword, verbose_name='Keywords',
+                                      help_text='Article keywords, used as keywords in SEO, the best use of long tail words, 3-4 enough')
 
     class Meta:
-        verbose_name = '文章'
+        verbose_name = 'Articles'
         verbose_name_plural = verbose_name
         ordering = ['-create_date']
 
@@ -115,33 +115,33 @@ class Article(models.Model):
 # 时间线
 class Timeline(models.Model):
     COLOR_CHOICE = (
-        ('primary', '基本-蓝色'),
-        ('success', '成功-绿色'),
-        ('info', '信息-天蓝色'),
-        ('warning', '警告-橙色'),
-        ('danger', '危险-红色')
+        ('primary', 'Basic-Blue'),
+        ('success', 'Succeed-Green'),
+        ('info', 'Info-Azure'),
+        ('warning', 'Warning-Orange'),
+        ('danger', 'Danger-Red')
     )
     SIDE_CHOICE = (
-        ('L', '左边'),
-        ('R', '右边'),
+        ('L', 'Left'),
+        ('R', 'Right'),
     )
     STAR_NUM = (
-        (1, '1颗星'),
-        (2, '2颗星'),
-        (3, '3颗星'),
-        (4, '4颗星'),
-        (5, '5颗星'),
+        (1, '1 star'),
+        (2, '2 stars'),
+        (3, '3 stars'),
+        (4, '4 stars'),
+        (5, '5 stars'),
     )
-    side = models.CharField('位置', max_length=1, choices=SIDE_CHOICE, default='L')
-    star_num = models.IntegerField('星星个数', choices=STAR_NUM, default=3)
-    icon = models.CharField('图标', max_length=50, default='fa fa-pencil')
-    icon_color = models.CharField('图标颜色', max_length=20, choices=COLOR_CHOICE, default='info')
-    title = models.CharField('标题', max_length=100)
-    update_date = models.DateTimeField('更新时间')
-    content = models.TextField('主要内容')
+    side = models.CharField('Location', max_length=1, choices=SIDE_CHOICE, default='L')
+    star_num = models.IntegerField('Star Count', choices=STAR_NUM, default=3)
+    icon = models.CharField('Icon', max_length=50, default='fa fa-pencil')
+    icon_color = models.CharField('Icon color', max_length=20, choices=COLOR_CHOICE, default='info')
+    title = models.CharField('Title', max_length=100)
+    update_date = models.DateTimeField('Update Time')
+    content = models.TextField('Main Contents')
 
     class Meta:
-        verbose_name = '时间线'
+        verbose_name = 'Timeline'
         verbose_name_plural = verbose_name
         ordering = ['update_date']
 
@@ -156,14 +156,14 @@ class Timeline(models.Model):
 
 # 幻灯片
 class Carousel(models.Model):
-    number = models.IntegerField('编号', help_text='编号决定图片播放的顺序，图片不要多于5张')
-    title = models.CharField('标题', max_length=20, blank=True, null=True, help_text='标题可以为空')
-    content = models.CharField('描述', max_length=80)
-    img_url = models.CharField('图片地址', max_length=200)
-    url = models.CharField('跳转链接', max_length=200, default='#', help_text='图片跳转的超链接，默认#表示不跳转')
+    number = models.IntegerField('Number', help_text='The number determines the order in which the pictures are played, no more than 5 pictures')
+    title = models.CharField('Title', max_length=20, blank=True, null=True, help_text='The title can be empty')
+    content = models.CharField('Description', max_length=80)
+    img_url = models.CharField('Picture Address', max_length=200)
+    url = models.CharField('Target Link', max_length=200, default='#', help_text='Image jump hyperlink, default # means no jump')
 
     class Meta:
-        verbose_name = '图片轮播'
+        verbose_name = 'Picture racing lamp'
         verbose_name_plural = verbose_name
         # 编号越小越靠前，添加的时间约晚约靠前
         ordering = ['number', '-id']
