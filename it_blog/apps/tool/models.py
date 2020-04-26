@@ -4,11 +4,11 @@ from django.db import models
 # Create your models here.
 
 class ToolCategory(models.Model):
-    name = models.CharField('网站分类名称', max_length=20)
-    order_num = models.IntegerField('序号', default=99, help_text='序号可以用来调整顺序，越小越靠前')
+    name = models.CharField('Site Category name', max_length=20)
+    order_num = models.IntegerField('Serial Number', default=99, help_text='Serial Numbers can be used to adjust the order, the smaller the more forward')
 
     class Meta:
-        verbose_name = '工具分类'
+        verbose_name = 'Tools Categories'
         verbose_name_plural = verbose_name
         ordering = ['order_num', 'id']
 
@@ -17,14 +17,14 @@ class ToolCategory(models.Model):
 
 
 class ToolLink(models.Model):
-    name = models.CharField('网站名称', max_length=20)
-    description = models.CharField('网站描述', max_length=100)
-    link = models.URLField('网站链接')
-    order_num = models.IntegerField('序号', default=99, help_text='序号可以用来调整顺序，越小越靠前')
-    category = models.ForeignKey(ToolCategory, verbose_name='网站分类', blank=True, null=True, on_delete=models.SET_NULL)
+    name = models.CharField('Site Name', max_length=20)
+    description = models.CharField('Site Description', max_length=100)
+    link = models.URLField('Site Link')
+    order_num = models.IntegerField('Serial Number', default=99, help_text='Serial Numbers can be used to adjust the order, the smaller the more forward')
+    category = models.ForeignKey(ToolCategory, verbose_name='Site Category', blank=True, null=True, on_delete=models.SET_NULL)
 
     class Meta:
-        verbose_name = '推荐工具'
+        verbose_name = 'Recommended Tools'
         verbose_name_plural = verbose_name
         ordering = ['order_num', 'id']
 
