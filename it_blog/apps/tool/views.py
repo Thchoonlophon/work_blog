@@ -34,7 +34,7 @@ def regexview(request):
         else:
             script_tag = ''
             info = '\n'.join(lis)
-            result = "匹配到&nbsp;{}&nbsp;个结果：\n".format(num) + "```\n" + info + "\n```"
+            result = "{}&nbsp;matches：\n".format(num) + "```\n" + info + "\n```"
         result = markdown.markdown(result, extensions=[
             'markdown.extensions.extra',
             'markdown.extensions.codehilite',
